@@ -1,9 +1,9 @@
 # SAMPLE SERVER UCI CONFIGURATION #
 
-config openvpn 'server03'
-	option tls-server
+config openvpn 'server'
 	option enabled '1'
-	option cert_password 'erke123'
+	option tls-server
+	option cert_password 'PASSWD'
 	option port '1194'
 	option proto 'udp'
 	option dev 'tun'
@@ -16,6 +16,8 @@ config openvpn 'server03'
 	option persist_tun '1'
 	option keepalive "10 60"
 	list push "route 10.198.0.0 255.255.0.0"
+
+	# Enable management server
 	option management '127.0.0.1 23000'
 
 	
