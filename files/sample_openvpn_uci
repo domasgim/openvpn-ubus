@@ -1,4 +1,4 @@
-package openvpn
+# SAMPLE SERVER UCI CONFIGURATION #
 
 config openvpn 'server03'
 	option tls-server
@@ -8,18 +8,14 @@ config openvpn 'server03'
 	option proto 'udp'
 	option dev 'tun'
 	option server "192.168.200.0 255.255.255.0"
-
-	option ca '/etc/openvpn/cookbook/ca.crt'
-	option cert '/etc/openvpn/cookbook/server.crt'
-	option key '/etc/openvpn/cookbook/server.key'
-	option dh '/etc/openvpn/cookbook/dh.pem'
-
+	option ca '/etc/openvpn/ca.crt'
+	option cert '/etc/openvpn/server.crt'
+	option key '/etc/openvpn/server.key'
+	option dh '/etc/openvpn/dh.pem'
 	option persist_key '1'
 	option persist_tun '1'
 	option keepalive "10 60"
-
 	list push "route 10.198.0.0 255.255.0.0"
-
 	option management '127.0.0.1 23000'
 
 	
