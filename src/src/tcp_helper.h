@@ -12,7 +12,6 @@
 
 #include <stdio.h>
 #include <string.h>
-#include "uci_helper.h"
 
 /**
  * @brief Send a message through a socket

@@ -2,11 +2,13 @@
 #include <libubus.h>
 
 #include "tcp_helper.h"
-#include "uci_helper.h"
 
 #include <uci.h>
 #include <string.h>
 #include <arpa/inet.h>
+
+static char *IP_ADDR;
+static char *PORT;
 
 /**
  * @brief Parse management server reply containing client info
@@ -64,4 +66,3 @@ static int management_kill(struct ubus_context *ctx, struct ubus_object *obj,
  * @param server_name Server name
  */
 int ubus_start(char *server_name);
-
