@@ -2,7 +2,7 @@ DEPS = $(wildcard *.h)
 SRC = $(wildcard src/*.c)
 OBJ = $(patsubst %.c, %.o, $(SRC))
 TARGET = openvpn-ubus
-LDFLAGS+=-lblobmsg_json -lubox -lubus -luci
+LDFLAGS+=-lblobmsg_json -lubox -lubus -luci -largp
 RM = rm -f
 
 all: $(TARGET)

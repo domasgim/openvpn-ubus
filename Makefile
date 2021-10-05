@@ -11,7 +11,7 @@ define Package/openvpn-ubus
 	SECTION:=utils
 	CATEGORY:=Utilities
 	TITLE:=openvpn-ubus
-	DEPENDS:=+libubus +libubox +libblobmsg-json +libuci
+	DEPENDS:=+libubus +libubox +libblobmsg-json +libuci +libargp
 endef
 
 define Package/openvpn-ubus/description
