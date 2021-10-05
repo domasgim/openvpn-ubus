@@ -5,14 +5,14 @@ void send_msg(int socket_peer, char *read) {
     return;
 }
 
-int recv_msg_string(int socket_peer, char ***reply,  int **bytes_received) {
+int recv_msg_string(int socket_peer, char **reply,  int *bytes_received) {
     char read[4096];
-    **bytes_received = recv(socket_peer, read, 4096, 0);
-    if (**bytes_received < 1) {
+    *bytes_received = recv(socket_peer, read, 4096, 0);
+    if (*bytes_received < 1) {
         fprintf(stderr, "Connection closed by peer.\n");
         return 1;
     }
-    **reply = read;
+    *reply = read;
     return 0;
 }
 
@@ -78,6 +78,8 @@ int connect_socket(struct addrinfo *peer_address, int socket_peer) {
 }
 
 int tcp_send_msg(char *msg, char **reply, int *bytes_received, char *ip_addr, char *port) {
+    char *reply_tmp;
+    int bytes_received_tmp;
     struct addrinfo *peer_address;
 
     if(configure_remote_addr(&peer_address, ip_addr, port)) {
@@ -102,7 +104,10 @@ int tcp_send_msg(char *msg, char **reply, int *bytes_received, char *ip_addr, ch
     /* Actual message */
     send_msg(socket_peer, msg);
     send_msg(socket_peer, "\n");
-    recv_msg_string(socket_peer, &reply, &bytes_received);
+    recv_msg_string(socket_peer, &reply_tmp, &bytes_received_tmp);
+
+    *reply = reply_tmp;
+    *bytes_received = bytes_received_tmp;
 
     close(socket_peer);
 

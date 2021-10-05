@@ -29,7 +29,7 @@ void send_msg(int socket_peer, char *read);
  * @param bytes_received Refrence to received bytes count
  * @return int 
  */
-int recv_msg_string(int socket_peer, char ***reply,  int **bytes_received);
+int recv_msg_string(int socket_peer, char **reply,  int *bytes_received);
 
 /**
  * @brief Receive a message through a socket, not printing any reply
