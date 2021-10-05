@@ -32,7 +32,7 @@ int configure_remote_addr(struct addrinfo **peer_address, char *ip_addr, char *p
     hints.ai_socktype = SOCK_STREAM;
 
     if (getaddrinfo(ip_addr, port, &hints, peer_address)) {
-        fprintf(stderr, "getaddrinfo() failed. (%d)\n", errno);
+        fprintf(stderr, "getaddrinfo() failed to %s:%s. (%d)\n", ip_addr, port, errno);
         return 1;
     }
 
@@ -81,7 +81,6 @@ int tcp_send_msg(char *msg, char **reply, int *bytes_received, char *ip_addr, ch
     struct addrinfo *peer_address;
 
     if(configure_remote_addr(&peer_address, ip_addr, port)) {
-        fprintf(stderr, "getaddrinfo() failed. (%d)\n", errno);
         return 1;
     }
 

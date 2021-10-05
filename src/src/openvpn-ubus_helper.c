@@ -58,6 +58,8 @@ static int management_status(struct ubus_context *ctx, struct ubus_object *obj,
     int bytes_received;
     int rc;
     rc = tcp_send_msg("status", &reply, &bytes_received, IP_ADDR, PORT);
+
+    printf("sending status request to %s:%s\n", IP_ADDR, PORT);
     if (rc) {
         fprintf(stderr, "tcp_send_msg error\n");
         return 1;
