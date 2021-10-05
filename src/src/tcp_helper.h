@@ -56,7 +56,7 @@ int configure_remote_addr(struct addrinfo **peer_address, char *ip_addr, char *p
  * @param peer_address peer address
  * @return int 
  */
-int print_remote_addr(struct addrinfo *peer_address);
+void print_remote_addr(struct addrinfo *peer_address);
 
 /**
  * @brief Create a socket object
