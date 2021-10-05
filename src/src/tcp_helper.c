@@ -39,7 +39,7 @@ int configure_remote_addr(struct addrinfo **peer_address, char *ip_addr, char *p
     return 0;
 }
 
-int print_remote_addr(struct addrinfo *peer_address) {
+void print_remote_addr(struct addrinfo *peer_address) {
     printf("Remote address is: ");
     char address_buffer[100];
     char service_buffer[100];
