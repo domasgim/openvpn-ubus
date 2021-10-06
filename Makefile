@@ -22,7 +22,7 @@ define Package/openvpn-ubus/install
 	$(INSTALL_DIR) $(1)/usr/bin
 	$(INSTALL_DIR) $(1)/etc/init.d
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/openvpn-ubus $(1)/usr/bin/openvpn-ubus
-	$(INSTALL_BIN) ./files/openvpn.init $(1)/etc/init.d/openvpn
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/files/openvpn.init $(1)/etc/init.d/openvpn
 	$(INSTALL_BIN) ./files/openvpn-ubus.init $(1)/etc/init.d/openvpn-ubus
 endef
 

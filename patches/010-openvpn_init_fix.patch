@@ -1,0 +1,27 @@
+--- a/files/openvpn.init
++++ b/files/openvpn.init
+@@ -172,6 +172,13 @@ start_instance() {
+ 	config_get config "$s" config
+ 	config="${config:+$(readlink -f "$config")}"
+ 	
++	config_get management "$1" management
++	config_get enabled "$1" enabled
++
++	if [ -n "$management" ] && [ $enabled -gt 0 ]; then                                    
++		/etc/init.d/openvpn-ubus start "$1" "$management"   
++    	fi
++
+ 	section_enabled "$s" || {
+ 		append UCI_DISABLED "$config" "$LIST_SEP"
+ 		return 1
+@@ -250,4 +257,8 @@ start_service() {
+ 
+ service_triggers() {
+ 	procd_add_reload_trigger openvpn
+-}
+\ No newline at end of file
++}
++
++stop_service() {
++    /etc/init.d/openvpn-ubus stop
++}
